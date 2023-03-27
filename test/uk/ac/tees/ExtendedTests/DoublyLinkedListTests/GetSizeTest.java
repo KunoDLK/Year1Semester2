@@ -52,4 +52,22 @@ public class GetSizeTest {
         assertEquals(expResult, result);
         System.out.println("As expected, nodes successfully counted");
     }
+
+    /**
+     * Test 3 of getSize method, of class DoublyLinkedList.
+     */
+    // @Ignore
+    @Test
+    public void test_singleELement_correctSizeReturned() {
+        System.out.println("> Test2 - getSize in non-empty list: should return correct size");
+        System.out.println("creating a non-empty list with an arbitrary number of nodes...");
+        int[] a = { 15 };
+        DoublyLinkedList instance = new DoublyLinkedList(a);
+        int expResult = a.length;
+        // compute size of list
+        int result = instance.getSize();
+        // test computation of list size
+        assertEquals(expResult, result);
+        System.out.println("As expected, nodes successfully counted");
+    }
 }

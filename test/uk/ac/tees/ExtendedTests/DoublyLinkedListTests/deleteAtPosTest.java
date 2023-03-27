@@ -9,10 +9,9 @@ import org.junit.Test;
 import uk.ac.tees.linkedlistica.DoublyLinkedList;
 import uk.ac.tees.linkedlistica.DoublyLinkedListNode;
 
-import org.junit.Ignore;
 import static org.junit.Assert.*;
 
-public class deleteAtPoAtPosTest {
+public class deleteAtPosTest {
     @BeforeClass
     public static void setUpClass() {
         System.out.println("\ntesting the deleteAtPo() method of class DoublyLinkedList\n");
@@ -31,7 +30,7 @@ public class deleteAtPoAtPosTest {
         System.out.println("attempting to deleteAtPo a node with an arbitrary index in a non-existing list...");
         // select node to be deleteAtPod
         int nodeIndex = 3;
-        boolean result = instance.deleteAtPoAtPo(nodeIndex);
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertNull("head no longer points to null", instance.head);
         System.out.println("As expected, deleting aborted, head still points to null");
@@ -51,7 +50,7 @@ public class deleteAtPoAtPosTest {
         System.out.println("attempting to deleteAtPo a node with an arbitrary index in a non-existing list...");
         // select node to be deleteAtPod
         int nodeIndex = 3;
-        boolean result = instance.deleteAtPoAtPo(nodeIndex);
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertEquals(expResult, result);
         System.out.println("As expected, no node was found, deleting aborted");
@@ -71,8 +70,8 @@ public class deleteAtPoAtPosTest {
         DoublyLinkedListNode first = instance.head;
         System.out.println("attempting to deleteAtPoAtPo a node with an invalid index...");
         // select node to be deleteAtPoAtPod
-        int nodeIndex = 0;
-        boolean result = instance.deleteAtPoAtPo(nodeIndex);
+        int nodeIndex = -1;
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertEquals("head no longer pointing to first node of list", instance.head, first);
         System.out.println(
@@ -92,9 +91,9 @@ public class deleteAtPoAtPosTest {
         DoublyLinkedList instance = new DoublyLinkedList(a);
         System.out.println("attempting to deleteAtPo a node with an invalid index...");
         // select node to be deleteAtPod
-        int nodeIndex = 0;
+        int nodeIndex = -1;
         boolean expResult = false;
-        boolean result = instance.deleteAtPo(nodeIndex);
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertEquals(expResult, result);
         System.out.println("As expected, node was not found, deleting aborted");
@@ -115,8 +114,8 @@ public class deleteAtPoAtPosTest {
         DoublyLinkedListNode todeleteAtPo = instance.head;
         System.out.println("attempting to deleteAtPo first node in list...");
         // select node to be deleteAtPod
-        int nodeIndex = 1;
-        boolean result = instance.deleteAtPo(nodeIndex);
+        int nodeIndex = 0;
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertNotSame("head of list still connected to deleteAtPod node", instance.head, todeleteAtPo);
         System.out.println("As expected, head no longer points to deleteAtPod node");
@@ -137,8 +136,8 @@ public class deleteAtPoAtPosTest {
         DoublyLinkedListNode todeleteAtPo = instance.head;
         System.out.println("attempting to deleteAtPo first node in list...");
         // select node to be deleteAtPod
-        int nodeIndex = 1;
-        boolean result = instance.deleteAtPo(nodeIndex);
+        int nodeIndex = 0;
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertNull("deleteAtPod node not connected to null", todeleteAtPo.next);
         System.out.println("As expected, deleteAtPod node's next pointer is successfully pointing to null");
@@ -160,7 +159,7 @@ public class deleteAtPoAtPosTest {
         System.out.println("attempting to deleteAtPo first node in list...");
         // select node to be deleteAtPod
         int nodeIndex = 1;
-        boolean result = instance.deleteAtPo(nodeIndex);
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertNull("deleteAtPod node not connected to null", todeleteAtPo.prev);
         System.out.println("As expected, deleteAtPod node's prev pointer is successfully pointing to null");
@@ -184,7 +183,7 @@ public class deleteAtPoAtPosTest {
         System.out.println("attempting to deleteAtPo first node in list...");
         // select node to be deleteAtPod
         int nodeIndex = 1;
-        boolean result = instance.deleteAtPo(nodeIndex);
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertNotSame("node to be deleteAtPod still connected to list", todeleteAtPo.next, after);
         System.out.println("As expected, the deleteAtPod node is no longer connected to the list");
@@ -206,8 +205,8 @@ public class deleteAtPoAtPosTest {
         DoublyLinkedListNode after = todeleteAtPo.next;
         System.out.println("attempting to deleteAtPo first node in list...");
         // select node to be deleteAtPod
-        int nodeIndex = 1;
-        boolean result = instance.deleteAtPo(nodeIndex);
+        int nodeIndex = 0;
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertEquals("deleteAtPod node not bypassed in list", instance.head, after);
         System.out.println("As expected, head now points to the successor of the deleteAtPod node in list");
@@ -231,7 +230,7 @@ public class deleteAtPoAtPosTest {
         System.out.println("attempting to deleteAtPo first node in list...");
         // select node to be deleteAtPod
         int nodeIndex = 1;
-        boolean result = instance.deleteAtPo(nodeIndex);
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertNull("prev pointer of successor node to deleteAtPod node does not point to null", after.prev);
         System.out
@@ -252,7 +251,7 @@ public class deleteAtPoAtPosTest {
         boolean expResult = true;
         // select node to be deleteAtPod
         int nodeIndex = 1;
-        boolean result = instance.deleteAtPo(nodeIndex);
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertEquals(expResult, result);
         System.out.println("As expected, node was found and deleteAtPod");
@@ -273,12 +272,12 @@ public class deleteAtPoAtPosTest {
         DoublyLinkedListNode before = instance.head;
         // select arbitrary node to be deleteAtPod
         int nodeIndex = 5;
-        for (int i = 1; i < nodeIndex - 1; i++)
+        for (int i = 0; i < nodeIndex - 1; i++)
             before = before.next;
         // mark node to be deleteAtPod
         DoublyLinkedListNode todeleteAtPo = before.next;
         System.out.println("attempting to deleteAtPo a node in middle of list...");
-        boolean result = instance.deleteAtPo(nodeIndex);
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertNotSame("first part of list still connected to node to be deleteAtPod", before.next, todeleteAtPo);
         System.out.println("As expected, first part of list is now disconnected from the deleteAtPod node");
@@ -299,12 +298,12 @@ public class deleteAtPoAtPosTest {
         DoublyLinkedListNode before = instance.head;
         // select arbitrary node to be deleteAtPod
         int nodeIndex = 5;
-        for (int i = 1; i < nodeIndex - 1; i++)
+        for (int i = 0; i < nodeIndex - 1; i++)
             before = before.next;
         // mark node to be deleteAtPod
         DoublyLinkedListNode todeleteAtPo = before.next;
         System.out.println("attempting to deleteAtPo a node in middle of list...");
-        boolean result = instance.deleteAtPo(nodeIndex);
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertNotSame("node to be deleteAtPod still connected to first part of list", todeleteAtPo.prev, before);
         System.out.println("As expected, the deleteAtPod node is now disconnected from the first part of list");
@@ -330,7 +329,7 @@ public class deleteAtPoAtPosTest {
         // mark node after node to be deleteAtPod
         DoublyLinkedListNode after = todeleteAtPo.next;
         System.out.println("attempting to deleteAtPo a node in middle of list...");
-        boolean result = instance.deleteAtPo(nodeIndex);
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertNotSame("node to be deleteAtPod still connected to second half of list", todeleteAtPo.next, after);
         System.out.println("As expected, deleteAtPod node is no longer connected to second part of list");
@@ -356,7 +355,7 @@ public class deleteAtPoAtPosTest {
         // mark node after node to be deleteAtPod
         DoublyLinkedListNode after = todeleteAtPo.next;
         System.out.println("attempting to deleteAtPo a node in middle of list...");
-        boolean result = instance.deleteAtPo(nodeIndex);
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertNotSame("second half of list still connected to node to be deleteAtPod", after.prev, todeleteAtPo);
         System.out.println("As expected, second part of list is no longer connected to deleteAtPod node");
@@ -377,10 +376,10 @@ public class deleteAtPoAtPosTest {
         int nodeIndex = 5;
         // get to and mark node to be deleteAtPod
         DoublyLinkedListNode todeleteAtPo = instance.head;
-        for (int i = 1; i < nodeIndex; i++)
+        for (int i = 0; i < nodeIndex; i++)
             todeleteAtPo = todeleteAtPo.next;
         System.out.println("attempting to deleteAtPo a node in middle of list...");
-        boolean result = instance.deleteAtPo(nodeIndex);
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertNull("node to be deleteAtPod's next pointer not connected to null", todeleteAtPo.next);
         System.out.println("As expected, deleteAtPod node's next pointer is now pointing to null");
@@ -401,10 +400,10 @@ public class deleteAtPoAtPosTest {
         int nodeIndex = 5;
         // get to and mark node to be deleteAtPod
         DoublyLinkedListNode todeleteAtPo = instance.head;
-        for (int i = 1; i < nodeIndex; i++)
+        for (int i = 0; i < nodeIndex; i++)
             todeleteAtPo = todeleteAtPo.next;
         System.out.println("attempting to deleteAtPo a node in middle of list...");
-        boolean result = instance.deleteAtPo(nodeIndex);
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertNull("node to be deleteAtPod's prev pointer not connected to null", todeleteAtPo.prev);
         System.out.println("As expected, deleteAtPod node's prev pointer is now pointing to null");
@@ -425,14 +424,14 @@ public class deleteAtPoAtPosTest {
         int nodeIndex = 5;
         // get to and mark node before node to be deleteAtPod
         DoublyLinkedListNode before = instance.head;
-        for (int i = 1; i < nodeIndex - 1; i++)
+        for (int i = 0; i < nodeIndex - 1; i++)
             before = before.next;
         // mark node to be deleteAtPod
         DoublyLinkedListNode todeleteAtPo = before.next;
         // mark node after node to be deleteAtPod
         DoublyLinkedListNode after = todeleteAtPo.next;
         System.out.println("attempting to deleteAtPo a node in middle of list...");
-        boolean result = instance.deleteAtPo(nodeIndex);
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertEquals("predecessor node is not connected to successor node", before.next, after);
         System.out.println("As expected, deleteAtPod node was bypassed; predecessor node was connected to successor node");
@@ -453,14 +452,14 @@ public class deleteAtPoAtPosTest {
         int nodeIndex = 5;
         // get to and mark node before node to be deleteAtPod
         DoublyLinkedListNode before = instance.head;
-        for (int i = 1; i < nodeIndex - 1; i++)
+        for (int i = 0; i < nodeIndex - 1; i++)
             before = before.next;
         // mark node to be deleteAtPod
         DoublyLinkedListNode todeleteAtPo = before.next;
         // mark node after node to be deleteAtPod
         DoublyLinkedListNode after = todeleteAtPo.next;
         System.out.println("attempting to deleteAtPo a node in middle of list...");
-        boolean result = instance.deleteAtPo(nodeIndex);
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertEquals("successor node is not connected to predecessor node", after.prev, before);
         System.out.println("As expected, successor node is connected to predecessor node");
@@ -480,7 +479,7 @@ public class deleteAtPoAtPosTest {
         System.out.println("attempting to deleteAtPo a node in middle of list...");
         // select arbitrary node to be deleteAtPod
         int nodeIndex = 5;
-        boolean result = instance.deleteAtPo(nodeIndex);
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertEquals(expResult, result);
         System.out.println("As expected, node was found and deleteAtPod");
@@ -501,10 +500,10 @@ public class deleteAtPoAtPosTest {
         int nodeIndex = a.length;
         // get to and mark node before node to be deleteAtPod
         DoublyLinkedListNode before = instance.head;
-        for (int i = 1; i < nodeIndex - 1; i++)
+        for (int i = 0; i < nodeIndex - 1; i++)
             before = before.next;
         System.out.println("attempting to deleteAtPo last node in list...");
-        boolean result = instance.deleteAtPo(nodeIndex);
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertNull("predecessor node's next pointer not connected to null", before.next);
         System.out.println("As expected, predecessor node's next pointer now points to null");
@@ -528,7 +527,7 @@ public class deleteAtPoAtPosTest {
         for (int i = 1; i < nodeIndex; i++)
             todeleteAtPo = todeleteAtPo.next;
         System.out.println("attempting to deleteAtPo last node in list...");
-        boolean result = instance.deleteAtPo(nodeIndex);
+        boolean result = instance.deleteAtPos(nodeIndex);
         // test node deletion
         assertNull("deleteAtPod node's next pointer is not set to null", todeleteAtPo.next);
         System.out.println("As expected, deleteAtPod node's next pointer now points to null");
@@ -552,7 +551,7 @@ public class deleteAtPoAtPosTest {
         for (int i = 1; i < nodeIndex; i++)
             todeleteAtPo = todeleteAtPo.next;
         System.out.println("attempting to deleteAtPo last node in list...");
-        boolean result = instance.deleteAtPo(nodeIndex);
+        boolean result = instance.deleteAtPos(nodeIndex - 1);
         // test node deletion
         assertNull("deleteAtPod node's prev pointer is not set to null", todeleteAtPo.prev);
         System.out.println("As expected, deleteAtPod node's prev pointer now points to null");
@@ -572,7 +571,7 @@ public class deleteAtPoAtPosTest {
         System.out.println("attempting to deleteAtPo last node in list...");
         // select node to be deleteAtPod
         int nodeIndex = a.length;
-        boolean result = instance.deleteAtPo(nodeIndex);
+        boolean result = instance.deleteAtPos(nodeIndex - 1);
         // test node deletion
         assertEquals(expResult, result);
         System.out.println("As expected, last node was found and deleteAtPod");

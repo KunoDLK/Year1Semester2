@@ -51,7 +51,7 @@ public class DoublyLinkedList {
      */
     public int getLast() {
         if (head == null)
-            return 999;
+            return -1;
 
         DoublyLinkedListNode currentNode = head;
 
@@ -69,9 +69,26 @@ public class DoublyLinkedList {
      * @return      the number of nodes deleted
      */
     public int deleteAllNodesWithValue(int obj) {
-        //ADD YOUR ANSWER HERE
-        return -1;
+        int count = 0;
+        DoublyLinkedListNode current = head;
+        
+        while (current != null) {
+            if (current.data == obj) {
+                // Delete the node
+                if (current.prev != null) {
+                    current.prev.next = current.next;
+                }
+                if (current.next != null) {
+                    current.next.prev = current.prev;
+                }
+                count++;
+            }
+            current = current.next;
+        }
+        
+        return count;
     }
+    
     
     /**
      * Deletes the node in the list at the specified index.
@@ -79,8 +96,54 @@ public class DoublyLinkedList {
      * @return      true if successful, otherwise false
      */
     public boolean deleteAtPos(int index) {
-        //ADD YOUR ANSWER HERE
-        return false;
+        if (head == null || index < 0)
+            return false;
+
+        if (index == 0) {
+            DoublyLinkedListNode newHead = null;
+            if (head.next != null)
+            {
+                newHead = head.next;
+            }
+            head.next = null;
+            head = null;
+            if (newHead != null)
+            {
+                head = newHead;
+                head.prev = null;
+            }
+            return true;
+        }
+
+        DoublyLinkedListNode toDeleteNode = head;
+
+        for (int i = 0; i < index; i++) {
+            if (toDeleteNode == null)
+                return false;
+            toDeleteNode = toDeleteNode.next;
+        }
+
+        if (toDeleteNode != null) {
+            DoublyLinkedListNode NextNode = null;
+            DoublyLinkedListNode prevNode = toDeleteNode.prev;
+            if (toDeleteNode.next != null) {
+                NextNode = toDeleteNode.next;
+            }
+
+            // disconnect delete node
+            prevNode.next.prev = null;
+            prevNode.next = null;
+            toDeleteNode.next = null;
+
+            if (NextNode != null) {
+                prevNode.next = NextNode;
+                prevNode.next.prev = prevNode;
+            }
+
+            return true;
+        } else {
+            return false;
+        }
     }
     
     /**
