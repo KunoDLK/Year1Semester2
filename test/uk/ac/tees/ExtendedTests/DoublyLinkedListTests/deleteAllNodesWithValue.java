@@ -6,10 +6,8 @@ package DoublyLinkedListTests;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import uk.ac.tees.linkedlistica.DoublyLinkedList;
-import uk.ac.tees.linkedlistica.DoublyLinkedListNode;
-
 import static org.junit.Assert.*;
+import uk.ac.tees.linkedlistica.*;;
 
 public class deleteAllNodesWithValue {
         @BeforeClass
