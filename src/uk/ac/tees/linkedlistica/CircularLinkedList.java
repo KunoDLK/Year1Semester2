@@ -36,26 +36,50 @@ public class CircularLinkedList {
      * Gets whether or not the list is empty.
      * @return  true if list is empty, otherwise false
      */
-  //  public boolean isEmpty() {
-        //ADD YOUR ANSWER HERE
-  //  }
+    public boolean isEmpty() {
+        return head.next.data == -999;
+    }
+    
 
     /**
      * Returns the list as a string of the form "{item1, item2, ...}"
      * @return  the resulting string
      */
-  /**  @Override  //you need the @Override instruction. Make sure you uncomment it when testing your methods.
+    @Override
     public String toString() {
-        //ADD YOUR ANSWER HERE
-   }*/
+        StringBuilder sb = new StringBuilder();
+        sb.append("{");
+        ListNode current = head.next;
+        while (current != head) {
+            sb.append(current.data);
+            if (current.next != head) {
+                sb.append(", ");
+            }
+            current = current.next;
+        }
+        sb.append("}");
+        return sb.toString();
+    }
     
     /**
      * Deletes any node containing a value that is a multiple of three.
      * @return 
      */
-   // public int deleteMultiplesOfThree() {
-        //ADD YOUR ANSWER HERE
-  //  }
+    public int deleteMultiplesOfThree() {
+        int count = 0;
+        ListNode current = head.next;
+        ListNode prev = head;
+        while (current != head) {
+            if (current.data % 3 == 0) {
+                prev.next = current.next;
+                count++;
+            } else {
+                prev = current;
+            }
+            current = current.next;
+        }
+        return count;
+    }
     
     /**
      * Adds an item after a specified index in the list.
@@ -63,18 +87,41 @@ public class CircularLinkedList {
      * @param index the index
      * @return      true if successful, otherwise false
      */
-  //  public boolean addAfterPos(int obj, int index) {
-       //ADD YOUR ANSWER HERE
-  //  }
+    public boolean addAfterPos(int obj, int index) {
+        ListNode current = head.next;
+        int pos = 0;
+        while (current != head && pos < index) {
+            current = current.next;
+            pos++;
+        }
+        if (pos == index) {
+            ListNode newNode = new ListNode(obj, current.next);
+            current.next = newNode;
+            return true;
+        }
+        return false;
+    }
     
     /**
      * Deletes the middle element from the list, rounding the index down in case
      * the list has an even number of items.
      * @return  true on successful delete, otherwise false
      */
- //   public boolean deleteMiddle() {
-        //ADD YOUR ANSWER HERE
-  //  }
+    public boolean deleteMiddle() {
+        ListNode slow = head.next;
+        ListNode fast = head.next;
+        ListNode prev = head;
+        while (fast != head && fast.next != head) {
+            prev = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        if (slow != head) {
+            prev.next = slow.next;
+            return true;
+        }
+        return false;
+    }
     
     /**
      * Adds a piece of data at the specified index.
@@ -82,15 +129,32 @@ public class CircularLinkedList {
      * @param index the index
      * @return      true on successful insert, otherwise false
      */
-  //  public boolean addAtPos(int obj, int index) {
-       //ADD YOUR ANSWER HERE
-  //  }
+    public boolean addAtPos(int obj, int index) {
+        ListNode current = head.next;
+        int pos = 0;
+        while (current != head && pos < index - 1) {
+            current = current.next;
+            pos++;
+        }
+        if (pos == index - 1) {
+            ListNode newNode = new ListNode(obj, current.next);
+            current.next = newNode;
+            return true;
+        }
+        return false;
+    }
     
     /**
      * Returns the sum of all integers in the list.
      * @return  the sum
      */
-  //  public int sum() {
-       //ADD YOUR ANSWER HERE
-   // }
+    public int sum() {
+        int sum = 0;
+        ListNode current = head.next;
+        while (current != head) {
+            sum += current.data;
+            current = current.next;
+        }
+        return sum;
+    }
 }

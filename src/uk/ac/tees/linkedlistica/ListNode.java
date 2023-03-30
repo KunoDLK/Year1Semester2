@@ -10,12 +10,12 @@ public class ListNode {
     /**
      * Stores the data for the node (an integer value).
      */
-    int data;
+    public int data;
 
     /**
      * Stores the link to the next node.
      */
-    ListNode next;
+    public ListNode next;
 
     /**
      * Creates a new empty node.
