@@ -87,6 +87,7 @@ public class CircularLinkedListTest {
         assertEquals("List should be correctly turned into a string.", 
                 "{3, 7, 9, 13, 12}", instance.toString());
     }
+    
     /**
      * Test of deleteMultiplesOfThree method, of class CircularLinkedList.
      */
@@ -118,6 +119,7 @@ public class CircularLinkedListTest {
         assertArrayEquals("Items should be correctly added.", 
                 new int[] {2, 4, 3, 6, 6}, circularLinkedListToArray(instance));
     }
+
     /**
      * Test of deleteMiddle method, of class CircularLinkedList.
      */
@@ -135,8 +137,6 @@ public class CircularLinkedListTest {
         assertArrayEquals("Middle node should be correctly deleted.", 
                 new int[] {2, 4, 7, 8}, circularLinkedListToArray(instance));
     }
-
-    
 }
 
     

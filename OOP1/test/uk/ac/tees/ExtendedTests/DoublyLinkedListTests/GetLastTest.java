@@ -9,7 +9,6 @@ import org.junit.Test;
 import uk.ac.tees.linkedlistica.DoublyLinkedList;
 import uk.ac.tees.linkedlistica.DoublyLinkedListNode;
 
-import org.junit.Ignore;
 import static org.junit.Assert.*;
 
 public class GetLastTest {
