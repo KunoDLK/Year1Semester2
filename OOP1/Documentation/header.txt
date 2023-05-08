@@ -1,0 +1,121 @@
+/**
+ * Represents a doubly linked list.
+ * 
+ * @author Your Name (X0000000@tees.ac.uk)
+ */
+public class DoublyLinkedList {
+    public DoublyLinkedListNode head;
+    
+    /**
+     * Creates a new doubly linked list from an existing array.
+     * 
+     * @param data the array to create the new linked list from
+     */
+    public DoublyLinkedList(int[] data);
+    
+    /**
+     * Gets the length of the doubly linked list.
+     * 
+     * @return the length
+     */
+    public int getSize();
+    
+    /**
+     * Gets the last item in the doubly linked list, or -999 if not found.
+     * 
+     * @return the last item, or -999 if empty
+     */
+    public int getLast();
+    
+    /**
+     * Deletes all nodes with the given value, returning the number of nodes
+     * deleted.
+     * 
+     * @param obj the value to be deleted
+     * @return the number of nodes deleted
+     */
+    public int deleteAllNodesWithValue(int obj);
+    
+    /**
+     * Deletes the node in the list at the specified index.
+     * 
+     * @param index the index
+     * @return true if successful, otherwise false
+     */
+    public boolean deleteAtPos(int index);
+    
+    /**
+     * Reverses the order of this doubly linked list.
+     */
+    public void reverseOrderLinkedList();
+    
+    /**
+     * Appends a singly linked list to this doubly linked list.
+     * 
+     * @param list the singly linked list to append
+     */
+    public void appendSinglyLinkedList(SinglyLinkedList list);
+}
+
+/**
+ * Represents a node in a doubly linked list.
+ */
+public class DoublyLinkedListNode {
+    
+    /**
+     * Stores the data for the node (an integer value).
+     */
+    public int data;
+    
+    /**
+     * Stores the link to the next node.
+     */
+    public DoublyLinkedListNode next;    
+    
+    /**
+     * Stores the link to the previous node.
+     */
+    public DoublyLinkedListNode prev;
+}
+
+/**
+ * Represents a node in a linked list.
+ */
+public class ListNode {
+    
+    /**
+     * Stores the data for the node (an integer value).
+     */
+    public int data;
+
+    /**
+     * Stores the link to the next node.
+     */
+    public ListNode next;
+}
+
+package uk.ac.tees.linkedlistica;
+
+/**
+ * Represents a singly linked list.
+ * @author Your Name (X0000000@tees.ac.uk)
+ */
+public class SinglyLinkedList {
+    
+    /**
+     * Stores the first node in the list.
+     */
+    public ListNode head;
+    
+    /**
+     * Creates a new singly linked list from an existing array.
+     * @param data  the array to create the new linked list from
+     */
+    public SinglyLinkedList(int[] data) {
+    }
+    
+    /**
+     * Creates a new, empty singly linked list.
+     */
+    public SinglyLinkedList() {
+    }

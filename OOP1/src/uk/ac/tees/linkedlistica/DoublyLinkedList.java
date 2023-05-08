@@ -151,29 +151,32 @@ public class DoublyLinkedList {
         }
     }
 
-/**
- * Reverses the order of this doubly linked list.
- */
-public void reverseOrderLinkedList() {
-    DoublyLinkedListNode temp = null;
-    DoublyLinkedListNode current = head;
+    /**
+     * Reverses the order of this doubly linked list.
+     */
+    public void reverseOrderLinkedList() {
+        DoublyLinkedListNode temp = null;
+        DoublyLinkedListNode current = head;
 
-    /* swap next and prev pointers for all nodes of
-     * doubly linked list */
-    while (current != null) {
-        temp = current.prev;
-        current.prev = current.next;
-        current.next = temp;
-        current = current.prev;
+        /*
+         * swap next and prev pointers for all nodes of
+         * doubly linked list
+         */
+        while (current != null) {
+            temp = current.prev;
+            current.prev = current.next;
+            current.next = temp;
+            current = current.prev;
+        }
+
+        /*
+         * Before changing head, check for the cases like empty
+         * list and list with only one node
+         */
+        if (temp != null) {
+            head = temp.prev;
+        }
     }
-
-    /* Before changing head, check for the cases like empty
-     * list and list with only one node */
-    if (temp != null) {
-        head = temp.prev;
-    }
-}
-
 
     /**
      * Appends a singly linked list to this doubly linked list.
@@ -181,6 +184,35 @@ public void reverseOrderLinkedList() {
      * @param list the singly linked list to append
      */
     public void appendSinglyLinkedList(SinglyLinkedList list) {
-        // ADD YOUR ANSWER HERE
+        // Get the last node in the doubly linked list
+        if (list.head == null) {
+            // there is no work required to do
+            return;
+        }
+
+        DoublyLinkedListNode lastNode = head;
+        if (lastNode != null) {
+            while (lastNode.next != null) {
+                lastNode = lastNode.next;
+            }
+        }
+
+        // Get the first node in the singly linked list
+        ListNode currentNode = list.head;
+
+        // Append the singly linked list to the doubly linked list
+        while (currentNode != null) {
+            DoublyLinkedListNode newNode = new DoublyLinkedListNode();
+            newNode.data = currentNode.data;
+            if (head == null) {
+                head = newNode;
+                lastNode = head;
+            } else {
+                lastNode.next = newNode;
+                newNode.prev = lastNode;
+                lastNode = newNode;
+            }
+            currentNode = currentNode.next;
+        }
     }
 }
