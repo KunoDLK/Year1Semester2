@@ -150,6 +150,7 @@ public class CircularLinkedList {
      */
     public int sum() {
         int sum = 0;
+        // Start at the head
         ListNode current = head.next;
         while (current != head) {
             sum += current.data;
