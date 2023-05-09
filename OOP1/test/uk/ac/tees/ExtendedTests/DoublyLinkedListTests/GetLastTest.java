@@ -24,7 +24,7 @@ public class GetLastTest {
     @Test
     public void test_emptyList_noDataReturned() {
         System.out.println("> Test1 - getLast in empty list: should return sentinel value");
-        int expResult = -1;
+        int expResult = -999;
         System.out.print("creating an empty list...");
         int[] intArray = {};
         DoublyLinkedList instance = new DoublyLinkedList(intArray);
@@ -38,8 +38,7 @@ public class GetLastTest {
     /**
      * Test 2 of getLast method, of class DoublyLinkedList.
      */
-    //// @Ignore
-    @Test
+     @Test
     public void test_nonEmptyList_correctDataReturned() {
         System.out.println("> Test2 - getLast in non-empty list: should return value in last node of list");
         // create a non-empty list

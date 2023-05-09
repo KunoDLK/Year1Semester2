@@ -55,7 +55,7 @@ public class DoublyLinkedList {
      */
     public int getLast() {
         if (head == null)
-            return -1;
+            return -999;
 
         DoublyLinkedListNode currentNode = head;
 
