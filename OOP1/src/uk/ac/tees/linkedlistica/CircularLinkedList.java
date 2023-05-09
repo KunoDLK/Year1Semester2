@@ -2,7 +2,7 @@ package uk.ac.tees.linkedlistica;
 
 /**
  * Represents a circular linked list.
- * @author Your Name (X0000000@tees.ac.uk)
+ * @author Your Name (B1033634@tees.ac.uk)
  */
 public class CircularLinkedList {
     
